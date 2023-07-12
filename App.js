@@ -1,18 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button } from 'react-native';
-import { StyleSheet, Text, View,TouchableWithoutFeedback,TouchableOpacity,TouchableHighlight , SafeAreaView, Image } from 'react-native';
+import { StyleSheet, Text, View,TouchableWithoutFeedback,TouchableOpacity,TouchableHighlight , SafeAreaView, Image, Alert, Platform} from 'react-native';
 
 export default function App() {
 
-  const handlePress = () => console.log("text pressed"); 
-  const tap = () => alert('ALERT')
+  const yes = () => console.log("YES"); 
+  const no  = () => console.log("NO"); 
+  const tap = () => Alert.prompt("My title", "Message here", (text=> console.log(text) ))
   return (
     <SafeAreaView style={styles.container}>
-      <Button 
-      title='Click me' 
-      color="blue"
-      onPress={tap}
-      />
+      <View style={styles.views}>
+      </View>
     </SafeAreaView>
   );
 }
@@ -22,6 +20,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     justifyContent:'center', 
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingTop: Platform.OS === 'android' ? 20 : 0
   },
+  views: {
+    backgroundColor: 'dodgerblue', 
+    width: '100%',
+    height: '30%' 
+  }
 });
